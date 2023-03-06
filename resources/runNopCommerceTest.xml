@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NopCommerce">
+
+<!--	<test name="Run on Firefox">-->
+<!--		<parameter name="browser" value="firefox" />-->
+<!--		<classes>-->
+<!--			<class name="testcases.nopcommerce.user.User_01_Register" />-->
+<!--		</classes>-->
+<!--	</test>-->
+
+	<!-- <test name="Run on Headless Firefox">
+	<parameter name = "browser" value = "h_firefox"/>
+    <classes>
+      <class name="com.nopcommerce.user.User_004_Login_PageObject_Multiple_browsers"/>
+    </classes>
+  </test>  Test -->
+
+	<test name="Run on Chrome">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="testcases.nopcommerce.user.User_01_Register" />
+		</classes>
+	</test>
+
+	<!-- <test name="Run on Headless Chrome">
+	<parameter name = "browser" value = "h_chrome"/>
+    <classes>
+      <class name="com.nopcommerce.user.User_004_Login_PageObject_Multiple_browsers"/>
+    </classes>
+  </test>  Test -->
+</suite> <!-- Suite -->
