@@ -1,7 +1,9 @@
 package actions.pageObjects;
 
 import actions.commons.BasePage;
+
 import interfaces.pageUIs.HomePageUI;
+
 import org.openqa.selenium.WebDriver;
 
 public class HomePageObjects extends BasePage {
@@ -12,8 +14,13 @@ public class HomePageObjects extends BasePage {
         this.driver = driver;
     }
 
-    public void clickRegisterLink(){
+    public void clickRegisterLink() {
         waitForElementClickAble(driver, HomePageUI.REGISTER_LINK);
         clickToElement(driver, HomePageUI.REGISTER_LINK);
+    }
+
+    public void clickLoginLink() {
+        waitForElementClickAble(driver, HomePageUI.LOGIN_LINK);
+        clickToElement(driver, HomePageUI.LOGIN_LINK);
     }
 }

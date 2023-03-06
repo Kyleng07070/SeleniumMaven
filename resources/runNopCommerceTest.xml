@@ -4,7 +4,7 @@
 <!--	<test name="Run on Firefox">-->
 <!--		<parameter name="browser" value="firefox" />-->
 <!--		<classes>-->
-<!--			<class name="testcases.nopcommerce.user.User_01_Register" />-->
+<!--			<class name="testcases.nopcommerce.user.User01Register" />-->
 <!--		</classes>-->
 <!--	</test>-->
 
@@ -18,7 +18,7 @@
 	<test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="testcases.nopcommerce.user.User_01_Register" />
+			<class name="testcases.nopcommerce.user.User02Login" />
 		</classes>
 	</test>
 
