@@ -17,10 +17,10 @@ import java.util.Random;
 public class User02Login extends BaseTest {
     WebDriver driver;
 
-    private String emailAddress, firstName, lastName, password;
+    private String emailAddress;
+    private String password;
     private LoginPageObjects loginPageObjects;
     private HomePageObjects homePageObjects;
-    private RegisterPageObjects registerPageObjects;
 
     @Parameters("browser")
     @BeforeClass
@@ -28,14 +28,14 @@ public class User02Login extends BaseTest {
         driver = getBrowserDriver(browserName);
 
         emailAddress = "Automation" + generateRandomNumber() + "@gmail.vn";
-        firstName = "Hung";
-        lastName = "Automation" + generateRandomNumber();
+        String firstName = "Hung";
+        String lastName = "Automation" + generateRandomNumber();
         password = "12345678";
 
         homePageObjects = new HomePageObjects(driver);
         homePageObjects.clickRegisterLink();
 
-        registerPageObjects = new RegisterPageObjects(driver);
+        RegisterPageObjects registerPageObjects = new RegisterPageObjects(driver);
         registerPageObjects.inputToFirstNameTextbox(firstName);
         registerPageObjects.inputToLastNameTextbox(lastName);
         registerPageObjects.inputToEmailTextbox(emailAddress);
@@ -57,7 +57,7 @@ public class User02Login extends BaseTest {
     }
 
     @Test
-    public void Login_02_Invalid_Email() {
+    public void Login_02_Not_Registered_Email() {
         homePageObjects = new HomePageObjects(driver);
         homePageObjects.clickLoginLink();
 
@@ -73,7 +73,20 @@ public class User02Login extends BaseTest {
     }
 
     @Test
-    public void Login_03_Invalid_PW() {
+    public void Login_03_Invalid_Email() {
+        homePageObjects = new HomePageObjects(driver);
+        homePageObjects.clickLoginLink();
+
+        loginPageObjects = new LoginPageObjects(driver);
+        loginPageObjects.inputToEmailTextbox("Invalid");
+        loginPageObjects.inputToPasswordTextbox(password);
+        loginPageObjects.clickLoginButton();
+
+        Assert.assertEquals(loginPageObjects.getEmailErrorMessage(), "Wrong email");
+    }
+
+    @Test
+    public void Login_04_Invalid_PW() {
         homePageObjects = new HomePageObjects(driver);
         homePageObjects.clickLoginLink();
 
@@ -89,7 +102,7 @@ public class User02Login extends BaseTest {
     }
 
     @Test
-    public void Login_04_Success() {
+    public void Login_05_Success() {
         homePageObjects = new HomePageObjects(driver);
         homePageObjects.clickLoginLink();
 
@@ -98,7 +111,8 @@ public class User02Login extends BaseTest {
         loginPageObjects.inputToPasswordTextbox(password);
         loginPageObjects.clickLoginButton();
 
-        loginPageObjects.clickLogoutLink();
+        homePageObjects = new HomePageObjects(driver);
+        Assert.assertTrue(homePageObjects.isMyAccountDisplay());
     }
 
     public int generateRandomNumber() {
