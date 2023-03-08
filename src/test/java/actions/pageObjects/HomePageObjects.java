@@ -2,6 +2,7 @@ package actions.pageObjects;
 
 import actions.commons.BasePage;
 import actions.pageManager.PageGeneratorManager;
+import actions.pageObjects.myAccountPageObjects.CustomerInfoPageObjects;
 
 import interfaces.pageUIs.HomePageUI;
 
@@ -30,5 +31,11 @@ public class HomePageObjects extends BasePage {
     public boolean isMyAccountDisplay() {
         waitForAllElementVisible(driver, HomePageUI.MY_ACCOUNT_LINK);
         return isElementDisplay(driver, HomePageUI.MY_ACCOUNT_LINK);
+    }
+
+    public CustomerInfoPageObjects clickMyAccountLink() {
+        waitForAllElementVisible(driver, HomePageUI.MY_ACCOUNT_LINK);
+        clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
+        return PageGeneratorManager.getCustomerInfoPage(driver);
     }
 }

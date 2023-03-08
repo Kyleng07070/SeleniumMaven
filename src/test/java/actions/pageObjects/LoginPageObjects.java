@@ -45,9 +45,4 @@ public class LoginPageObjects extends BasePage {
         waitForElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
         sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, "");
     }
-
-    public void clickLogoutLink() {
-        waitForElementClickAble(driver, LoginPageUI.LOGOUT_LINK);
-        clickToElement(driver, LoginPageUI.LOGOUT_LINK);
-    }
 }

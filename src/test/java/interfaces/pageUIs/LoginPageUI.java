@@ -7,5 +7,4 @@ public class LoginPageUI {
     public static final String PASSWORD_TEXTBOX = "//input[@id='Password']";
     public static final String ACCOUNT_NOT_FOUND_ERROR_MESSAGE =
             "//div[contains(@class,'validation-summary-errors')]";
-    public static final String LOGOUT_LINK = "//a[text()='Log out']";
 }
