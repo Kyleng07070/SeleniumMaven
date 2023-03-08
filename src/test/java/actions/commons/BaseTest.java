@@ -1,6 +1,7 @@
 package actions.commons;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -22,39 +23,42 @@ public class BaseTest {
                 WebDriverManager.firefoxdriver().setup();
                 driverBaseTest = new FirefoxDriver();
                 break;
-            case "h_firefox": {
-                // System.setProperty("webdriver.gecko.driver", projectPath +
-                // "/browserDrivers/geckodriver-1");
-                WebDriverManager.firefoxdriver().setup();
-                FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("-headless");
-                options.addArguments("window-size=1920x1080");
-                driverBaseTest = new FirefoxDriver(options);
-                break;
-            }
+            case "h_firefox":
+                {
+                    // System.setProperty("webdriver.gecko.driver", projectPath +
+                    // "/browserDrivers/geckodriver-1");
+                    WebDriverManager.firefoxdriver().setup();
+                    FirefoxOptions options = new FirefoxOptions();
+                    options.addArguments("-headless");
+                    options.addArguments("window-size=1920x1080");
+                    driverBaseTest = new FirefoxDriver(options);
+                    break;
+                }
             case "chrome":
                 // System.setProperty("webdriver.chrome.driver", projectPath +
                 // "/browserDrivers/chromedriver-7");
                 WebDriverManager.chromedriver().setup();
                 driverBaseTest = new ChromeDriver();
                 break;
-            case "h_chrome": {
-                // System.setProperty("webdriver.chrome.driver", projectPath +
-                // "/browserDrivers/chromedriver-7");
-                WebDriverManager.chromedriver().setup();
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("-headless");
-                options.addArguments("window-size=1920x1080");
-                driverBaseTest = new ChromeDriver(options);
-                break;
-            }
-            case "coccoc": {
-                WebDriverManager.chromedriver().driverVersion("copy version name").setup();
-                ChromeOptions options = new ChromeOptions();
-                options.setBinary("file location in laptop");
-                driverBaseTest = new ChromeDriver(options);
-                break;
-            }
+            case "h_chrome":
+                {
+                    // System.setProperty("webdriver.chrome.driver", projectPath +
+                    // "/browserDrivers/chromedriver-7");
+                    WebDriverManager.chromedriver().setup();
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("-headless");
+                    options.addArguments("window-size=1920x1080");
+                    driverBaseTest = new ChromeDriver(options);
+                    break;
+                }
+            case "coccoc":
+                {
+                    WebDriverManager.chromedriver().driverVersion("copy version name").setup();
+                    ChromeOptions options = new ChromeOptions();
+                    options.setBinary("file location in laptop");
+                    driverBaseTest = new ChromeDriver(options);
+                    break;
+                }
             default:
                 throw new RuntimeException("browserName invalid");
         }
@@ -65,8 +69,8 @@ public class BaseTest {
         return driverBaseTest;
     }
 
-    protected int randomNumber() {
-        Random rand = new Random();
-        return rand.nextInt(9999);
+    protected int generateRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(9999);
     }
 }

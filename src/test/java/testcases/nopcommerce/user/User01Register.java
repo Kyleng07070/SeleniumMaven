@@ -11,8 +11,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.util.Random;
-
 public class User01Register extends BaseTest {
     WebDriver driver;
 
@@ -133,11 +131,6 @@ public class User01Register extends BaseTest {
         Assert.assertEquals(
                 registerPageObjects.getConfirmPasswordErrorMessage(),
                 "The password and confirmation password do not match.");
-    }
-
-    public int generateRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(9999);
     }
 
     @AfterClass

@@ -1,6 +1,7 @@
 package actions.pageObjects;
 
 import actions.commons.BasePage;
+import actions.pageManager.PageGeneratorManager;
 
 import interfaces.pageUIs.HomePageUI;
 
@@ -14,14 +15,16 @@ public class HomePageObjects extends BasePage {
         this.driver = driver;
     }
 
-    public void clickRegisterLink() {
+    public RegisterPageObjects clickRegisterLink() {
         waitForElementClickAble(driver, HomePageUI.REGISTER_LINK);
         clickToElement(driver, HomePageUI.REGISTER_LINK);
+        return PageGeneratorManager.getRegisterPage(driver);
     }
 
-    public void clickLoginLink() {
+    public LoginPageObjects clickLoginLink() {
         waitForElementClickAble(driver, HomePageUI.LOGIN_LINK);
         clickToElement(driver, HomePageUI.LOGIN_LINK);
+        return PageGeneratorManager.getLoginPage(driver);
     }
 
     public boolean isMyAccountDisplay() {

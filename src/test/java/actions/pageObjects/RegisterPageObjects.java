@@ -1,6 +1,7 @@
 package actions.pageObjects;
 
 import actions.commons.BasePage;
+import actions.pageManager.PageGeneratorManager;
 
 import interfaces.pageUIs.RegisterPageUI;
 
@@ -77,5 +78,11 @@ public class RegisterPageObjects extends BasePage {
     public String getExistingEmailErrorMessage() {
         waitForElementVisible(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
         return getElementText(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
+    }
+
+    public HomePageObjects clickContinueButton() {
+        waitForElementVisible(driver, RegisterPageUI.CONTINUE_BUTTON);
+        clickToElement(driver, RegisterPageUI.CONTINUE_BUTTON);
+        return PageGeneratorManager.getHomePage(driver);
     }
 }

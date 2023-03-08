@@ -1,6 +1,7 @@
 package actions.pageObjects;
 
 import actions.commons.BasePage;
+import actions.pageManager.PageGeneratorManager;
 
 import interfaces.pageUIs.LoginPageUI;
 
@@ -14,9 +15,10 @@ public class LoginPageObjects extends BasePage {
         this.driver = driver;
     }
 
-    public void clickLoginButton() {
+    public HomePageObjects clickLoginButton() {
         waitForElementClickAble(driver, LoginPageUI.LOGIN_BUTTON);
         clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
+        return PageGeneratorManager.getHomePage(driver);
     }
 
     public String getEmailErrorMessage() {

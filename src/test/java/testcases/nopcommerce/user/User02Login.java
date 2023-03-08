@@ -1,6 +1,7 @@
 package testcases.nopcommerce.user;
 
 import actions.commons.BaseTest;
+import actions.pageManager.PageGeneratorManager;
 import actions.pageObjects.HomePageObjects;
 import actions.pageObjects.LoginPageObjects;
 import actions.pageObjects.RegisterPageObjects;
@@ -11,8 +12,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-import java.util.Random;
 
 public class User02Login extends BaseTest {
     WebDriver driver;
@@ -32,10 +31,9 @@ public class User02Login extends BaseTest {
         String lastName = "Automation" + generateRandomNumber();
         password = "12345678";
 
-        homePageObjects = new HomePageObjects(driver);
-        homePageObjects.clickRegisterLink();
+        homePageObjects = PageGeneratorManager.getHomePage(driver);
+        RegisterPageObjects registerPageObjects = homePageObjects.clickRegisterLink();
 
-        RegisterPageObjects registerPageObjects = new RegisterPageObjects(driver);
         registerPageObjects.inputToFirstNameTextbox(firstName);
         registerPageObjects.inputToLastNameTextbox(lastName);
         registerPageObjects.inputToEmailTextbox(emailAddress);
@@ -43,14 +41,12 @@ public class User02Login extends BaseTest {
         registerPageObjects.inputToConfirmPasswordTextbox(password);
         registerPageObjects.clickRegisterButton();
         System.out.println(emailAddress + " " + password);
+        homePageObjects = registerPageObjects.clickContinueButton();
     }
 
     @Test
     public void Login_01_Empty_Data() {
-        homePageObjects = new HomePageObjects(driver);
-        homePageObjects.clickLoginLink();
-
-        loginPageObjects = new LoginPageObjects(driver);
+        loginPageObjects = homePageObjects.clickLoginLink();
         loginPageObjects.clickLoginButton();
 
         Assert.assertEquals(loginPageObjects.getEmailErrorMessage(), "Please enter your email");
@@ -58,10 +54,8 @@ public class User02Login extends BaseTest {
 
     @Test
     public void Login_02_Not_Registered_Email() {
-        homePageObjects = new HomePageObjects(driver);
-        homePageObjects.clickLoginLink();
+        loginPageObjects = homePageObjects.clickLoginLink();
 
-        loginPageObjects = new LoginPageObjects(driver);
         loginPageObjects.inputToEmailTextbox("Invalid@gmail.com");
         loginPageObjects.inputToPasswordTextbox(password);
         loginPageObjects.clickLoginButton();
@@ -74,10 +68,8 @@ public class User02Login extends BaseTest {
 
     @Test
     public void Login_03_Invalid_Email() {
-        homePageObjects = new HomePageObjects(driver);
-        homePageObjects.clickLoginLink();
+        loginPageObjects = homePageObjects.clickLoginLink();
 
-        loginPageObjects = new LoginPageObjects(driver);
         loginPageObjects.inputToEmailTextbox("Invalid");
         loginPageObjects.inputToPasswordTextbox(password);
         loginPageObjects.clickLoginButton();
@@ -87,10 +79,8 @@ public class User02Login extends BaseTest {
 
     @Test
     public void Login_04_Invalid_PW() {
-        homePageObjects = new HomePageObjects(driver);
-        homePageObjects.clickLoginLink();
+        loginPageObjects = homePageObjects.clickLoginLink();
 
-        loginPageObjects = new LoginPageObjects(driver);
         loginPageObjects.inputToEmailTextbox(emailAddress);
         loginPageObjects.inputToPasswordTextbox("4567890");
         loginPageObjects.clickLoginButton();
@@ -103,21 +93,13 @@ public class User02Login extends BaseTest {
 
     @Test
     public void Login_05_Success() {
-        homePageObjects = new HomePageObjects(driver);
-        homePageObjects.clickLoginLink();
+        loginPageObjects = homePageObjects.clickLoginLink();
 
-        loginPageObjects = new LoginPageObjects(driver);
         loginPageObjects.inputToEmailTextbox(emailAddress);
         loginPageObjects.inputToPasswordTextbox(password);
-        loginPageObjects.clickLoginButton();
 
-        homePageObjects = new HomePageObjects(driver);
+        homePageObjects = loginPageObjects.clickLoginButton();
         Assert.assertTrue(homePageObjects.isMyAccountDisplay());
-    }
-
-    public int generateRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(9999);
     }
 
     @AfterClass
