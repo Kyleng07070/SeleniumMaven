@@ -40,9 +40,4 @@ public class LoginPageObjects extends BasePage {
         waitForElementVisible(driver, LoginPageUI.ACCOUNT_NOT_FOUND_ERROR_MESSAGE);
         return getElementText(driver, LoginPageUI.ACCOUNT_NOT_FOUND_ERROR_MESSAGE);
     }
-
-    public void clearPasswordTextbox() {
-        waitForElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
-        sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, "");
-    }
 }

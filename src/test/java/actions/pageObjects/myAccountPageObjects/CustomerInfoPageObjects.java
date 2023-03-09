@@ -1,6 +1,6 @@
 package actions.pageObjects.myAccountPageObjects;
 
-import actions.commons.BasePage;
+import actions.commons.BaseSwitchPages;
 import actions.pageManager.PageGeneratorManager;
 import actions.pageObjects.HomePageObjects;
 
@@ -8,7 +8,7 @@ import interfaces.pageUIs.myAccountPageUI.CustomerInfoPageUI;
 
 import org.openqa.selenium.WebDriver;
 
-public class CustomerInfoPageObjects extends BasePage {
+public class CustomerInfoPageObjects extends BaseSwitchPages {
     private final WebDriver driver;
 
     public CustomerInfoPageObjects(WebDriver driver) {

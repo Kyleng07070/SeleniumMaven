@@ -44,7 +44,7 @@ public class User03CustomerInfo extends BaseTest {
         registerPageObjects.inputToPasswordTextbox(password);
         registerPageObjects.inputToConfirmPasswordTextbox(password);
         registerPageObjects.clickRegisterButton();
-        System.out.println(emailAddress + " " + password);
+
         homePageObjects = registerPageObjects.clickContinueButton();
 
         loginPageObjects = homePageObjects.clickLoginLink();
@@ -100,7 +100,7 @@ public class User03CustomerInfo extends BaseTest {
 
         loginPageObjects.inputToEmailTextbox(updateEmail);
         loginPageObjects.inputToPasswordTextbox(password);
-
+        System.out.println(updateEmail + " " + password);
         homePageObjects = loginPageObjects.clickLoginButton();
         Assert.assertTrue(homePageObjects.isMyAccountDisplay());
         customerInfoPageObjects = homePageObjects.clickMyAccountLink();
