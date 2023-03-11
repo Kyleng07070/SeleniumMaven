@@ -1,5 +1,11 @@
 package actions.commons;
 
+import actions.pageManager.PageGeneratorManager;
+import actions.pageObjects.adminPages.AdminLoginPageObjects;
+import actions.pageObjects.userPages.HomePageObjects;
+
+import interfaces.pageUIs.userPageUIs.BaseSwitchPagesUI;
+
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.Alert;
@@ -28,7 +34,7 @@ public class BasePage {
     // protected: cac ham chi co the dc goi khi xai extends
     // test cases user_001 (1 & 2) examples cho viec ko goi dc
     // test case user_001 3 examples cho viec goi dc khi xai extends
-    protected void openPageUrl(@NotNull WebDriver driver, String pageUrl) {
+    public void openPageUrl(@NotNull WebDriver driver, String pageUrl) {
         driver.get(pageUrl);
     }
 
@@ -351,6 +357,13 @@ public class BasePage {
         jsExecutor.executeScript("arguments[0].click();", getWebElement(driver, xpathLocator));
     }
 
+    protected WebElement getShadowDOM(WebDriver driver, String xpathLocator) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        return (WebElement)
+                jsExecutor.executeScript(
+                        "return arguments[0].shadowRoot;", getWebElement(driver, xpathLocator));
+    }
+
     protected void scrollToElement(WebDriver driver, String xpathLocator) {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript(
@@ -439,5 +452,17 @@ public class BasePage {
     protected void waitForElementClickAble(WebDriver driver, String xpathLocator) {
         WebDriverWait explicitWait = new WebDriverWait(driver, longTimeOut);
         explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(xpathLocator)));
+    }
+
+    public HomePageObjects userClickLogoutLink(WebDriver driver) {
+        waitForElementVisible(driver, BaseSwitchPagesUI.USER_LOGOUT_LINK);
+        clickToElement(driver, BaseSwitchPagesUI.USER_LOGOUT_LINK);
+        return PageGeneratorManager.getHomePage(driver);
+    }
+
+    public AdminLoginPageObjects adminClickLogoutLink(WebDriver driver) {
+        waitForElementVisible(driver, BaseSwitchPagesUI.ADMIN_LOGOUT_LINK);
+        clickToElement(driver, BaseSwitchPagesUI.ADMIN_LOGOUT_LINK);
+        return PageGeneratorManager.getAdminLoginPage(driver);
     }
 }

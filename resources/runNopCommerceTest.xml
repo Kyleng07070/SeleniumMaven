@@ -21,7 +21,7 @@
 <!--			<package name="testcases.nopcommerce.user" />-->
 <!--		</packages>-->
 		<classes>
-			<class name="testcases.nopcommerce.user.User4Address" />
+			<class name="testcases.nopcommerce.user.User5SwitchRoles" />
 <!--			<methods>-->
 <!--				<include name="Customer_01_Validate_Info" />-->
 <!--			</methods>-->

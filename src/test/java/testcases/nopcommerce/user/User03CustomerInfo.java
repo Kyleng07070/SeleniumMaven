@@ -2,10 +2,10 @@ package testcases.nopcommerce.user;
 
 import actions.commons.BaseTest;
 import actions.pageManager.PageGeneratorManager;
-import actions.pageObjects.HomePageObjects;
-import actions.pageObjects.LoginPageObjects;
-import actions.pageObjects.RegisterPageObjects;
-import actions.pageObjects.myAccountPageObjects.CustomerInfoPageObjects;
+import actions.pageObjects.userPages.HomePageObjects;
+import actions.pageObjects.userPages.LoginPageObjects;
+import actions.pageObjects.userPages.RegisterPageObjects;
+import actions.pageObjects.userPages.myAccountPageObjects.CustomerInfoPageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

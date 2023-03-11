@@ -1,12 +1,14 @@
 package actions.pageManager;
 
-import actions.pageObjects.HomePageObjects;
-import actions.pageObjects.LoginPageObjects;
-import actions.pageObjects.RegisterPageObjects;
-import actions.pageObjects.myAccountPageObjects.AddressPageObjects;
-import actions.pageObjects.myAccountPageObjects.CustomerInfoPageObjects;
-import actions.pageObjects.myAccountPageObjects.MyProductReviewPageObjects;
-import actions.pageObjects.myAccountPageObjects.RewardPointPageObjects;
+import actions.pageObjects.adminPages.AdminDashboardPageObjects;
+import actions.pageObjects.adminPages.AdminLoginPageObjects;
+import actions.pageObjects.userPages.HomePageObjects;
+import actions.pageObjects.userPages.LoginPageObjects;
+import actions.pageObjects.userPages.RegisterPageObjects;
+import actions.pageObjects.userPages.myAccountPageObjects.AddressPageObjects;
+import actions.pageObjects.userPages.myAccountPageObjects.CustomerInfoPageObjects;
+import actions.pageObjects.userPages.myAccountPageObjects.MyProductReviewPageObjects;
+import actions.pageObjects.userPages.myAccountPageObjects.RewardPointPageObjects;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -46,5 +48,15 @@ public class PageGeneratorManager {
     @Contract("_ -> new")
     public static @NotNull RewardPointPageObjects getRewardPointPage(WebDriver driver) {
         return new RewardPointPageObjects(driver);
+    }
+
+    @Contract("_ -> new")
+    public static @NotNull AdminLoginPageObjects getAdminLoginPage(WebDriver driver) {
+        return new AdminLoginPageObjects(driver);
+    }
+
+    @Contract("_ -> new")
+    public static @NotNull AdminDashboardPageObjects getAdminDashboardPage(WebDriver driver) {
+        return new AdminDashboardPageObjects(driver);
     }
 }
