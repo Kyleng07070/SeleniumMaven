@@ -2,10 +2,7 @@ package actions.pageObjects.userPages;
 
 import actions.commons.BasePage;
 import actions.pageManager.PageGeneratorManager;
-import actions.pageObjects.userPages.myAccountPageObjects.AddressPageObjects;
-import actions.pageObjects.userPages.myAccountPageObjects.CustomerInfoPageObjects;
-import actions.pageObjects.userPages.myAccountPageObjects.MyProductReviewPageObjects;
-import actions.pageObjects.userPages.myAccountPageObjects.RewardPointPageObjects;
+import actions.pageObjects.userPages.myAccountPageObjects.*;
 
 import interfaces.pageUIs.userPageUIs.BaseSwitchPagesUI;
 
@@ -35,5 +32,38 @@ public class BaseSwitchPagesObjects extends BasePage {
         waitForElementVisible(driver, BaseSwitchPagesUI.CUSTOMER_INFO_LINK);
         clickToElement(driver, BaseSwitchPagesUI.CUSTOMER_INFO_LINK);
         return PageGeneratorManager.getCustomerInfoPage(driver);
+    }
+
+    public OrdersPageObjects openOrdersPage(WebDriver driver) {
+        waitForElementVisible(driver, BaseSwitchPagesUI.ORDERS_LINK);
+        clickToElement(driver, BaseSwitchPagesUI.ORDERS_LINK);
+        return PageGeneratorManager.getOrdersPage(driver);
+    }
+
+    public DownloadableProductsPageObjects openDownloadableProductsPage(WebDriver driver) {
+        waitForElementVisible(driver, BaseSwitchPagesUI.DOWNLOADABLE_PRODUCTS_LINK);
+        clickToElement(driver, BaseSwitchPagesUI.DOWNLOADABLE_PRODUCTS_LINK);
+        return PageGeneratorManager.getDownloadableProductsPage(driver);
+    }
+
+    public BaseSwitchPagesObjects openPagesAtSideTabMyAccount(WebDriver driver, String pageName) {
+        waitForElementVisible(driver, BaseSwitchPagesUI.DYNAMIC_SIDE_TAB_LINK_PAGES, pageName);
+        clickToElement(driver, BaseSwitchPagesUI.DYNAMIC_SIDE_TAB_LINK_PAGES, pageName);
+        switch (pageName) {
+            case "Addresses":
+                return PageGeneratorManager.getAddressPage(driver);
+            case "My product reviews":
+                return PageGeneratorManager.getMyProductReviewPage(driver);
+            case "Reward points":
+                return PageGeneratorManager.getRewardPointPage(driver);
+            case "Customer info":
+                return PageGeneratorManager.getCustomerInfoPage(driver);
+            case "Orders":
+                return PageGeneratorManager.getOrdersPage(driver);
+            case "Downloadable products":
+                return PageGeneratorManager.getDownloadableProductsPage(driver);
+            default:
+                throw new RuntimeException(String.format("Invalid page name: [%s]", pageName));
+        }
     }
 }

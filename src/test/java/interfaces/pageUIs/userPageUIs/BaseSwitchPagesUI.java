@@ -10,6 +10,13 @@ public class BaseSwitchPagesUI {
             "xpath=//div[contains(@class,'block-account-navigation')]//a[text()='Reward points']";
     public static final String CUSTOMER_INFO_LINK =
             "xpath=//div[contains(@class,'block-account-navigation')]//a[text()='Customer info']";
+    public static final String ORDERS_LINK =
+            "xpath=//div[contains(@class,'block-account-navigation')]//a[text()='Orders']";
+    public static final String DOWNLOADABLE_PRODUCTS_LINK =
+            "xpath=//div[contains(@class,'block-account-navigation')]//a[text()='Downloadable"
+                    + " products']";
     public static final String USER_LOGOUT_LINK = "class=ico-logout";
     public static final String ADMIN_LOGOUT_LINK = "xpath=//a[text()='Logout']";
+    public static final String DYNAMIC_SIDE_TAB_LINK_PAGES =
+            "xpath=//div[contains(@class,'block-account-navigation')]//a[text()='%s']";
 }

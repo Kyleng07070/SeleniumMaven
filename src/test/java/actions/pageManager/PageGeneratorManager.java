@@ -5,10 +5,7 @@ import actions.pageObjects.adminPages.AdminLoginPageObjects;
 import actions.pageObjects.userPages.HomePageObjects;
 import actions.pageObjects.userPages.LoginPageObjects;
 import actions.pageObjects.userPages.RegisterPageObjects;
-import actions.pageObjects.userPages.myAccountPageObjects.AddressPageObjects;
-import actions.pageObjects.userPages.myAccountPageObjects.CustomerInfoPageObjects;
-import actions.pageObjects.userPages.myAccountPageObjects.MyProductReviewPageObjects;
-import actions.pageObjects.userPages.myAccountPageObjects.RewardPointPageObjects;
+import actions.pageObjects.userPages.myAccountPageObjects.*;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -48,6 +45,17 @@ public class PageGeneratorManager {
     @Contract("_ -> new")
     public static @NotNull RewardPointPageObjects getRewardPointPage(WebDriver driver) {
         return new RewardPointPageObjects(driver);
+    }
+
+    @Contract("_ -> new")
+    public static @NotNull OrdersPageObjects getOrdersPage(WebDriver driver) {
+        return new OrdersPageObjects(driver);
+    }
+
+    @Contract("_ -> new")
+    public static @NotNull DownloadableProductsPageObjects getDownloadableProductsPage(
+            WebDriver driver) {
+        return new DownloadableProductsPageObjects(driver);
     }
 
     @Contract("_ -> new")
